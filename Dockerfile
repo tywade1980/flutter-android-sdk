@@ -6,8 +6,10 @@ RUN apt install usbutils -y
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash
 RUN apt-get install nodejs -y
 
-#FIRESTORE CLI
+# Install CLI tools
 RUN npm install -g firebase-tools
+RUN npm install -g @angular/cli
+RUN npm install -g typescript
 
 # Setup new user
 RUN useradd -ms /bin/bash developer
@@ -41,6 +43,8 @@ RUN flutter doctor
 
 RUN node -v
 RUN npm -v
+RUN ng version --skip-git
+RUN tsc --version
 RUN flutter -v
 
 ENTRYPOINT ["flutter"]
